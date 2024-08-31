@@ -26,28 +26,28 @@ class First:
   def public_member(self):
     print('Public Data Member',self.a)
   
-  def protected_member(self):
+  def _protected_member(self):
     print('Protected Data Member',self._b)
 
-  def private_member(self):
+  def __private_member(self):
     print('private data member',self.__c)
 
 # private can't be accessed in object/sub class
   def access_private(self):
-    self.private_member()
+    self.__private_member()
 
 class Sub(First):
   #constructor
   def __init__(self,a,b,c):
     First.__init__(self,a,b,c)
 
-  def access_protected(self):
-    self.protected_member()
+  def _access_protected(self):
+    self._protected_member()
 
 obj=Sub('m',200,'m')
 
 obj.public_member()
-obj.access_protected()
+obj._access_protected()
 obj.access_private()
 
 # Object can access protected member
